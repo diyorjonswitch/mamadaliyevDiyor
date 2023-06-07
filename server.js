@@ -1,3 +1,5 @@
+const { kMaxLength } = require('buffer')
+const { link } = require('fs')
 const http = require('http')
 const data = require('./data.js')
 
@@ -14,9 +16,9 @@ http.createServer((request, response) => {
             }
             const book = data.find(e => e.id == bookId)
 
-            if(!book) {
+            if (!book) {
                 response.writeHead(404, {
-                    'content-type':'aplication/json'
+                    'content-type': 'aplication/json'
                 })
                 response.end(JSON.stringify({
                     status: 404,
